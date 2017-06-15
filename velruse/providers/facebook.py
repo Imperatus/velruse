@@ -120,6 +120,8 @@ class FacebookProvider(object):
                 r.status_code, r.content))
         access_token = r.json()['access_token']
 
+        print(r.json())
+
         # Retrieve profile data
         graph_url = flat_url('https://graph.facebook.com/me',
                              access_token=access_token)
