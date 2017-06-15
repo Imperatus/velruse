@@ -120,12 +120,12 @@ class FacebookProvider(object):
                 r.status_code, r.content))
         access_token = r.json()['access_token']
 
-        print(r.json())
-
         # Retrieve profile data
         graph_url = flat_url('https://graph.facebook.com/me',
+                             fields='name,email,id',
                              access_token=access_token)
         r = requests.get(graph_url)
+
         if r.status_code != 200:
             raise ThirdPartyFailure("Status %s: %s" % (
                 r.status_code, r.content))
